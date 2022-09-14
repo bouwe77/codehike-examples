@@ -1,0 +1,63 @@
+# Tering Henkie
+
+<CH.Scrollycoding preset="https://codesandbox.io/s/cranky-jennings-x2nzp4">
+
+## Step 1
+
+Miep miep zoef
+
+```jsx src/App.js
+export default function App() {
+  return (
+    <div>
+      <h1>Tering Henkie</h1>
+    </div>
+  )
+}
+```
+
+---
+
+## Step 2
+
+Hoi!
+
+```jsx src/App.js focus=1,4,6,8
+import { useState } from "react"
+
+export default function App() {
+  const [counter, setCounter] = useState(0)
+  return (
+    <div>
+      <h1>Tering Henkie</h1>
+      <p>{counter}</p>
+    </div>
+  )
+}
+```
+
+---
+
+## Step 3
+
+Tering!
+
+```jsx src/App.js focus=4,8
+import { useState } from "react"
+
+export default function App() {
+  const [counter, setCounter] = useState(0)
+  return (
+    <div>
+      <h1>Tering Henkie</h1>
+      <p>
+        <button onClick={() => setCounter((counter) => counter + 1)}>
+          {counter}
+        </button>
+      </p>
+    </div>
+  )
+}
+```
+
+</CH.Scrollycoding>

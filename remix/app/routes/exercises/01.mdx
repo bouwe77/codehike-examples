@@ -1,0 +1,147 @@
+# Exercise 1 - Your first React components
+
+In this exercise we will update and create components for your _Spaceship_ React app. 🚀
+
+## The component tree of our app
+
+At this moment the app consists of the following component tree structure:
+
+- App
+  - Spaceship
+  - Footer
+
+In the following exercise we'll add the `Cockpit` component under the `Spaceship` component.
+
+## Creating and rendering the Cockpit component
+
+The first component we need is the `Cockpit` component. However, it does not exist yet, so let's create it:
+
+> 💡 Don't fully understand the exercise? Ask for help and/or refer to the [example code](/example-code) for some inspiration.
+
+1. Open the `Spaceship` component in the file `src/components/Spaceship.js`.
+
+2. Import the `CockpitImage` component from the `src/graphics` folder:
+
+```js
+import CockpitImage from "../graphics/CockpitImage"
+```
+
+3. Remove the comment and render the `CockpitImage` component: `<CockpitImage />`.
+
+4. Now save everything and verify in the browser you see the cockpit image. 🎉
+
+5. In the `src/components` folder, create a file called `Cockpit.js`.
+
+6. Create a function called `Cockpit` and `export default` it.
+
+7. Return the following JSX: an empty, self closing `div` with a `className="cockpit"`.
+
+8. In the `Spaceship` component, import the `Cockpit` component you just created:
+
+```js
+import Cockpit from "./Cockpit"
+```
+
+9. After the `<CockpitImage />`, render the `Cockpit` component: `<Cockpit />`.
+
+Notice we have a problem now: You are rendering (and returning) JSX with two components,
+but JSX requires us to always wrap all JSX in a single parent element. So let's do that now:
+
+10. Add a `div` element around the components:
+
+```js
+<div>
+  <CockpitImage />
+  <Cockpit />
+</div>
+```
+
+9. Verify you still only see the image of the cockpit, because the Cockpit component is still empty.
+
+10. However, if you open up developer tools, and click on the elements tab, you will see that the
+    `Cockpit` component div is also rendered.
+
+11. Notice how we also see the wrapper `div` element from the `Spaceship` component. This `div`
+    is not really necessary, so let's replace it by an empty element, also called a `Fragment`:
+
+```js
+<>
+  <CockpitImage />
+  <Cockpit />
+</>
+```
+
+## Rendering the left side screen with the Map component
+
+The cockpit is rather empty, so let's add a screen on the left side which will show a map of space.
+It helps you to locate your ship, but also other spaceships, planets and space stations.
+
+I already built a `Map` component, so all you have to do is _render_ it:
+
+1. Open the `Cockpit` component.
+
+2. Import the `Map` component from the `Map` folder: `import Map from './map'`.
+
+3. Inside the cockpit `div`, add a new `div` with `className="screen sidescreen leftscreen"`.
+
+4. You should see a monitor on the left side of the cockpit.
+
+5. Inside the `div` you just created, render the `Map` component: `<Map />`
+
+6. Verify you see a "Map" button. When you click it you'll see an enlarged left screen
+   with an interactive space map. 🚀 🪐 🛰 😃
+
+## Displaying JS variables in JSX
+
+Soon we'll add controls to the cockpit so we are able set course and take off. But before we do this we'll
+add two more screens that will display information about the status of the spaceship.
+
+The _middle_ screen will display information about the so-called _engine mode_. The engine mode can either be "stand by",
+meaning the engine does nothing, "thrusters" for taking off or "impulse" for flying long distances.
+
+The _right_ screen will display more information about our location, but in this exercise we'll only add the screen itself.
+
+I already created empty `MiddleScreen` and `RightScreen` components.
+
+1. Open the `Cockpit` component.
+
+2. Import both the `MiddleScreen` and `RightScreen` components.
+
+3. In the JSX, just below the `middlescreen div`, render both components:
+
+```jsx
+<div className="cockpit">
+  <div className="screen sidescreen leftscreen">
+    <Map />
+  </div>
+  <MiddleScreen />
+  <RightScreen />
+</div>
+```
+
+4. Notice how two extra screens have appeared in the cockpit.
+
+5. Open the `MiddleScreen` component.
+
+6. Inside the function body, but **before** the `return` statement,
+   create an `engineMode` variable with the value `"stand by"`:
+
+```js
+export default function MiddleScreen() {
+  const engineMode = "stand by"
+
+  return <div className="screen middlescreen"></div>
+}
+```
+
+7. In the JSX, inside the `div`, render the `engineMode` variable between curly braces:
+
+```jsx
+<div className="screen middlescreen">
+  <h1>engine mode:</h1> {engineMode}
+</div>
+```
+
+> 💡 Spot the `engineMode` variable. In order to render it, it is surrounded by _curly braces_.
+
+8. Verify the `engineMode` is displayed correctly by manually changing the value in code.
